@@ -9,13 +9,13 @@ public abstract class GetWebElementBehavior {
     private final String css;
     protected final int ordinal;
 
-    protected GetWebElementBehavior(String locatorType, String locatorValue, Integer ordinal, UiElement4 ancestor) {
+    protected GetWebElementBehavior(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
         this.css = composeCss(locatorType, locatorValue, ancestor);
         this.ordinal = ordinal == null || ordinal < 0 ? 0 : ordinal;
         this.locator = new By.ByCssSelector(this.css);
     }
 
-    private static String composeCss(String locatorType, String locatorValue, UiElement4 ancestor) {
+    private static String composeCss(String locatorType, String locatorValue, UiElement ancestor) {
         String ancestorCss = ancestor == null ? "" : ancestor.getCss();
         return String.format("%s %s", ancestorCss, String.format("%s%s", locatorType, locatorValue));
     }

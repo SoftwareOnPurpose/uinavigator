@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Test
-public class UiElement4GetTextTests {
+public class UiElementGetTextTests {
     private static final TestResources resources = TestResources.getInstance();
 
     @DataProvider
@@ -50,72 +50,72 @@ public class UiElement4GetTextTests {
         final String table2 = tableHeading2 + "\n" + jill2 + "\n" + eve2 + "\n" + joe2;
         final String table3 = tableHeading3 + "\n" + jill3 + "\n" + eve3 + "\n" + joe3;
         final String table4 = tableHeading4 + "\n" + jill4 + "\n" + eve4 + "\n" + joe4;
-        final UiElement4 byIdNonexistent =
-                UiElement4.getInstance("id nonexistent", UiLocatorType4.ID, "nonexistent");
-        final UiElement4 byIdRoot =
-                UiElement4.getInstance("id existent", UiLocatorType4.ID, "view");
-        final UiElement4 byIdChild =
-                UiElement4.getInstance("id on sub-element", UiLocatorType4.ID, "heading-id");
-        final UiElement4 byIdDescendent =
-                UiElement4.getInstance("id on descendent", UiLocatorType4.ID, "p-id");
-        final UiElement4 byIdDiv =
-                UiElement4.getInstance("id on ancestor element", UiLocatorType4.ID, "div-id");
-        final UiElement4 byTagNonexistent =
-                UiElement4.getInstance("tag nonexistent", UiLocatorType4.TAG, "nonexistent");
-        final UiElement4 byTagRoot =
-                UiElement4.getInstance("tag 'body'", UiLocatorType4.TAG, "body");
-        final UiElement4 byTagChild =
-                UiElement4.getInstance("tag 'p'", UiLocatorType4.TAG, "p");
-        final UiElement4 byTagDescendent =
-                UiElement4.getInstance("tag 'li'", UiLocatorType4.TAG, "li");
-        final UiElement4 byClassNonexistent =
-                UiElement4.getInstance("class nonexistent", UiLocatorType4.CLASS, "nonexistent");
-        final UiElement4 byClassRootElement =
-                UiElement4.getInstance("class 'root-element'", UiLocatorType4.CLASS, "root-element");
-        final UiElement4 byClassChild =
-                UiElement4.getInstance("class 'error'", UiLocatorType4.CLASS, "error");
-        final UiElement4 byClassDescendent =
-                UiElement4.getInstance("class 'names'", UiLocatorType4.CLASS, "names");
-        final UiElement4 byTagOrdinalNonexistent =
-                UiElement4.getInstance("tag ordinal nonexistent", UiLocatorType4.TAG, "h1", 2);
-        final UiElement4 byTagOrdinalChild =
-                UiElement4.getInstance("child tag ordinal", UiLocatorType4.TAG, "p", 3);
-        final UiElement4 byTagOrdinalDescendent =
-                UiElement4.getInstance("descendent tag ordinal", UiLocatorType4.TAG, "li", 4);
-        final UiElement4 byTagOrdinalChildDescendent =
-                UiElement4.getInstance("child/descendent tag ordinal", UiLocatorType4.TAG, "table", 2);
-        final UiElement4 byClassOrdinalNonexistent =
-                UiElement4.getInstance("class ordinal nonexistent", UiLocatorType4.CLASS, "error", 3);
-        final UiElement4 byClassOrdinalChild =
-                UiElement4.getInstance("child class ordinal", UiLocatorType4.CLASS, "error", 2);
-        final UiElement4 byClassOrdinalDescendent =
-                UiElement4.getInstance("descendent class ordinal", UiLocatorType4.CLASS, "sub-table", 2);
-        final UiElement4 byClassChildDescendent =
-                UiElement4.getInstance("child/descendent class ordinal", UiLocatorType4.CLASS, "names", 2);
-        final UiElement4 byTagNonexistentInRoot =
-                UiElement4.getInstance("id nonexistent", UiLocatorType4.ID, "nonexistent", byIdRoot);
-        final UiElement4 byTagNonexistentInParent =
-                UiElement4.getInstance("tag nonexistent in parent", UiLocatorType4.TAG, "h1", byIdDiv);
-        final UiElement4 byTagInParentNonexistent =
-                UiElement4.getInstance("tag in parent nonexistent", UiLocatorType4.TAG, "h1", byIdNonexistent);
-        final UiElement4 byTagInParent =
-                UiElement4.getInstance("tag in parent", UiLocatorType4.TAG, "p", byIdDiv);
-        final UiElement4 byClassTableContainer =
-                UiElement4.getInstance("class 'table-container'", UiLocatorType4.CLASS, "table-container");
-        final UiElement4 byTagInAncestor =
-                UiElement4.getInstance("tag in ancestor", UiLocatorType4.TAG, "td", byClassTableContainer);
-        final UiElement4 byTagUl =
-                UiElement4.getInstance("'ul' tag", UiLocatorType4.TAG, "ul");
-        final UiElement4 byTagOrdinalNonexistentInAncestor =
-                UiElement4.getInstance("'li' tag", UiLocatorType4.TAG, "li", 4, byTagUl);
-        final UiElement4 byClassOrdinalInParent =
-                UiElement4.getInstance("'sub-table' class", UiLocatorType4.CLASS, "sub-table", 2, byClassTableContainer);
-        final UiElement4 byTagInParentOrdinal =
-                UiElement4.getInstance("'th' tag in ancestor by ordinal", UiLocatorType4.TAG, "th", byClassOrdinalDescendent);
-        UiElement4 byTagOrdinal =
-                UiElement4.getInstance("by 'div' tag and ordinal", UiLocatorType4.TAG, "div", 2);
-        final UiElement4 byClassOrdinalInParentOrdinal =
-                UiElement4.getInstance("class 'row-style'", UiLocatorType4.CLASS, "row-style", 3, byTagOrdinal);
+        final UiElement byIdNonexistent =
+                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
+        final UiElement byIdRoot =
+                UiElement.getInstance("id existent", UiLocatorType.ID, "view");
+        final UiElement byIdChild =
+                UiElement.getInstance("id on sub-element", UiLocatorType.ID, "heading-id");
+        final UiElement byIdDescendent =
+                UiElement.getInstance("id on descendent", UiLocatorType.ID, "p-id");
+        final UiElement byIdDiv =
+                UiElement.getInstance("id on ancestor element", UiLocatorType.ID, "div-id");
+        final UiElement byTagNonexistent =
+                UiElement.getInstance("tag nonexistent", UiLocatorType.TAG, "nonexistent");
+        final UiElement byTagRoot =
+                UiElement.getInstance("tag 'body'", UiLocatorType.TAG, "body");
+        final UiElement byTagChild =
+                UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
+        final UiElement byTagDescendent =
+                UiElement.getInstance("tag 'li'", UiLocatorType.TAG, "li");
+        final UiElement byClassNonexistent =
+                UiElement.getInstance("class nonexistent", UiLocatorType.CLASS, "nonexistent");
+        final UiElement byClassRootElement =
+                UiElement.getInstance("class 'root-element'", UiLocatorType.CLASS, "root-element");
+        final UiElement byClassChild =
+                UiElement.getInstance("class 'error'", UiLocatorType.CLASS, "error");
+        final UiElement byClassDescendent =
+                UiElement.getInstance("class 'names'", UiLocatorType.CLASS, "names");
+        final UiElement byTagOrdinalNonexistent =
+                UiElement.getInstance("tag ordinal nonexistent", UiLocatorType.TAG, "h1", 2);
+        final UiElement byTagOrdinalChild =
+                UiElement.getInstance("child tag ordinal", UiLocatorType.TAG, "p", 3);
+        final UiElement byTagOrdinalDescendent =
+                UiElement.getInstance("descendent tag ordinal", UiLocatorType.TAG, "li", 4);
+        final UiElement byTagOrdinalChildDescendent =
+                UiElement.getInstance("child/descendent tag ordinal", UiLocatorType.TAG, "table", 2);
+        final UiElement byClassOrdinalNonexistent =
+                UiElement.getInstance("class ordinal nonexistent", UiLocatorType.CLASS, "error", 3);
+        final UiElement byClassOrdinalChild =
+                UiElement.getInstance("child class ordinal", UiLocatorType.CLASS, "error", 2);
+        final UiElement byClassOrdinalDescendent =
+                UiElement.getInstance("descendent class ordinal", UiLocatorType.CLASS, "sub-table", 2);
+        final UiElement byClassChildDescendent =
+                UiElement.getInstance("child/descendent class ordinal", UiLocatorType.CLASS, "names", 2);
+        final UiElement byTagNonexistentInRoot =
+                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent", byIdRoot);
+        final UiElement byTagNonexistentInParent =
+                UiElement.getInstance("tag nonexistent in parent", UiLocatorType.TAG, "h1", byIdDiv);
+        final UiElement byTagInParentNonexistent =
+                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", byIdNonexistent);
+        final UiElement byTagInParent =
+                UiElement.getInstance("tag in parent", UiLocatorType.TAG, "p", byIdDiv);
+        final UiElement byClassTableContainer =
+                UiElement.getInstance("class 'table-container'", UiLocatorType.CLASS, "table-container");
+        final UiElement byTagInAncestor =
+                UiElement.getInstance("tag in ancestor", UiLocatorType.TAG, "td", byClassTableContainer);
+        final UiElement byTagUl =
+                UiElement.getInstance("'ul' tag", UiLocatorType.TAG, "ul");
+        final UiElement byTagOrdinalNonexistentInAncestor =
+                UiElement.getInstance("'li' tag", UiLocatorType.TAG, "li", 4, byTagUl);
+        final UiElement byClassOrdinalInParent =
+                UiElement.getInstance("'sub-table' class", UiLocatorType.CLASS, "sub-table", 2, byClassTableContainer);
+        final UiElement byTagInParentOrdinal =
+                UiElement.getInstance("'th' tag in ancestor by ordinal", UiLocatorType.TAG, "th", byClassOrdinalDescendent);
+        UiElement byTagOrdinal =
+                UiElement.getInstance("by 'div' tag and ordinal", UiLocatorType.TAG, "div", 2);
+        final UiElement byClassOrdinalInParentOrdinal =
+                UiElement.getInstance("class 'row-style'", UiLocatorType.CLASS, "row-style", 3, byTagOrdinal);
         final String basicPage = "basic";
         final String listPage = "list";
         final String idPage = "id";
@@ -168,8 +168,8 @@ public class UiElement4GetTextTests {
     }
 
     @Test(dataProvider = "scenarios_getText")
-    public void getText(String page, UiElement4 element, String expected) {
-        UiHost4.getInstance().load(resources.getPageUrl(page));
+    public void getText(String page, UiElement element, String expected) {
+        UiHost.getInstance().load(resources.getPageUrl(page));
         String actual = element.getText();
         Assert.assertEquals(actual, expected);
     }

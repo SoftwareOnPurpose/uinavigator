@@ -1,15 +1,15 @@
 package com.softwareonpurpose.uinavigator.test.view.region;
 
-import com.softwareonpurpose.uinavigator.UiElement4;
-import com.softwareonpurpose.uinavigator.UiLocatorType4;
-import com.softwareonpurpose.uinavigator.UiRegion4;
+import com.softwareonpurpose.uinavigator.UiElement;
+import com.softwareonpurpose.uinavigator.UiLocatorType;
+import com.softwareonpurpose.uinavigator.UiRegion;
 
-public class UnorderedListRegion extends UiRegion4 {
-    public UnorderedListRegion(UiElement4 ancestor) {
-        super(UiElement4.getInstance("Unordered List", UiLocatorType4.TAG, "ul", ancestor));
+public class UnorderedListRegion extends UiRegion {
+    public UnorderedListRegion(UiElement ancestor) {
+        super(UiElement.getInstance("Unordered List", UiLocatorType.TAG, "ul", ancestor));
     }
 
-    public static UnorderedListRegion getInstance(UiElement4 parent) {
+    public static UnorderedListRegion getInstance(UiElement parent) {
         return new UnorderedListRegion(parent);
     }
 

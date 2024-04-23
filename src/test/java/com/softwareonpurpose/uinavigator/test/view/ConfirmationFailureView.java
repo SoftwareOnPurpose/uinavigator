@@ -1,13 +1,13 @@
 package com.softwareonpurpose.uinavigator.test.view;
 
 import com.softwareonpurpose.uinavigator.TestResources;
-import com.softwareonpurpose.uinavigator.UiElement4;
-import com.softwareonpurpose.uinavigator.UiLocatorType4;
-import com.softwareonpurpose.uinavigator.UiView4;
+import com.softwareonpurpose.uinavigator.UiElement;
+import com.softwareonpurpose.uinavigator.UiLocatorType;
+import com.softwareonpurpose.uinavigator.UiView;
 
-public class ConfirmationFailureView extends UiView4 {
+public class ConfirmationFailureView extends UiView {
     public ConfirmationFailureView() {
-        super(TestResources.getInstance().getPageUrl("basic"), UiElement4.getInstance("'View' element", UiLocatorType4.TAG, "body"));
+        super(TestResources.getInstance().getPageUrl("basic"), UiElement.getInstance("'View' element", UiLocatorType.TAG, "body"));
     }
 
     public static ConfirmationFailureView directNav() {
@@ -16,7 +16,7 @@ public class ConfirmationFailureView extends UiView4 {
     }
 
     private static ConfirmationFailureView expect() {
-        return UiView4.expect(ConfirmationFailureView.class);
+        return UiView.expect(ConfirmationFailureView.class);
     }
 
     @Override

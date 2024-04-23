@@ -4,16 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class UiHost4 {
+public class UiHost {
     private static Logger logger;
     private final ChromeDriver driver;
 
-    private UiHost4() {
+    private UiHost() {
         driver = UiNavigator.getInstance().getDriver();
     }
 
-    public static UiHost4 getInstance() {
-        return new UiHost4();
+    public static UiHost getInstance() {
+        return new UiHost();
     }
 
     public boolean load(String url) {

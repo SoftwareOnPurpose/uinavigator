@@ -6,17 +6,17 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Test
-public class UiElement4ActionTests {
+public class UiElementActionTests {
     private static final TestResources resources = TestResources.getInstance();
 
     @DataProvider
     public static Object[][] scenarios_click() {
-        final UiElement4 byTagPNotClickable =
-                UiElement4.getInstance("tag 'p'", UiLocatorType4.TAG, "p");
-        final UiElement4 byTagA =
-                UiElement4.getInstance("'Anchor' tag", UiLocatorType4.TAG, "a");
-        final UiElement4 byTagAOrdinal2 =
-                UiElement4.getInstance("'Anchor' tag #2", UiLocatorType4.TAG, "a", 2);
+        final UiElement byTagPNotClickable =
+                UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
+        final UiElement byTagA =
+                UiElement.getInstance("'Anchor' tag", UiLocatorType.TAG, "a");
+        final UiElement byTagAOrdinal2 =
+                UiElement.getInstance("'Anchor' tag #2", UiLocatorType.TAG, "a", 2);
         final String basicPage = "basic";
         final String linkPage = "link";
         return new Object[][]{
@@ -33,13 +33,13 @@ public class UiElement4ActionTests {
     }
 
     @Test(dataProvider = "scenarios_click")
-    public void click(String page, UiElement4 element, String expected) {
+    public void click(String page, UiElement element, String expected) {
         expected = expected.contains("http")
                 ? expected
                 : resources.getPageUrl(expected).replace("file:/", "file:///");
-        UiHost4.getInstance().load(resources.getPageUrl(page));
+        UiHost.getInstance().load(resources.getPageUrl(page));
         element.click();
-        String actual = UiHost4.getInstance().getCurrentUrl();
+        String actual = UiHost.getInstance().getCurrentUrl();
         Assert.assertEquals(actual, expected);
     }
 }

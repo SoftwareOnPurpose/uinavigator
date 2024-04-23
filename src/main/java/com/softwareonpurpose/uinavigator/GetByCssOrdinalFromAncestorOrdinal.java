@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class GetByCssOrdinalFromAncestorOrdinal extends GetWebElementBehavior {
-    private final UiElement4 ancestor;
+    private final UiElement ancestor;
 
-    protected GetByCssOrdinalFromAncestorOrdinal(String locatorType, String locatorValue, Integer ordinal, UiElement4 ancestor) {
+    protected GetByCssOrdinalFromAncestorOrdinal(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
         super(locatorType, locatorValue, ordinal, ancestor);
         this.ancestor = ancestor;
     }
 
-    public static GetByCssOrdinalFromAncestorOrdinal getInstance(String locatorType, String locatorValue, Integer ordinal, UiElement4 ancestor) {
+    public static GetByCssOrdinalFromAncestorOrdinal getInstance(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
         return new GetByCssOrdinalFromAncestorOrdinal(locatorType, locatorValue, ordinal, ancestor);
     }
 

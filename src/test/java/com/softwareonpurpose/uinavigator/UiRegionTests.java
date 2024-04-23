@@ -6,7 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 @Test
-public class UiRegion4Tests {
+public class UiRegionTests {
 
     private final TestResources resources = TestResources.getInstance();
 
@@ -17,8 +17,8 @@ public class UiRegion4Tests {
 
     @Test
     public void isDisplayed() {
-        UiElement4 parent = UiElement4.getInstance("Page", UiLocatorType4.TAG, "body");
-        UiHost4.getInstance().load(resources.getPageUrl("list"));
+        UiElement parent = UiElement.getInstance("Page", UiLocatorType.TAG, "body");
+        UiHost.getInstance().load(resources.getPageUrl("list"));
         Boolean expected = true;
         Boolean actual = UnorderedListRegion.getInstance(parent).isDisplayed();
         Assert.assertEquals(actual, expected);

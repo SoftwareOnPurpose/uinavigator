@@ -3,10 +3,10 @@ package com.softwareonpurpose.uinavigator;
 
 import org.apache.logging.log4j.LogManager;
 
-public abstract class UiRegion4 {
-    private final UiElement4 regionElement;
+public abstract class UiRegion {
+    private final UiElement regionElement;
 
-    protected UiRegion4(UiElement4 regionElement) {
+    protected UiRegion(UiElement regionElement) {
         LogManager.getLogger("").info(String.format("In '%s' region ...", regionElement.getDescription()));
         this.regionElement = regionElement;
     }
@@ -16,7 +16,7 @@ public abstract class UiRegion4 {
         return isDisplayed && confirmState();
     }
 
-    private UiElement4 getElement() {
+    private UiElement getElement() {
         return regionElement;
     }
 

@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Test
-public class UiHost4Tests {
+public class UiHostTests {
     private static final TestResources resources = TestResources.getInstance();
 
     @DataProvider
@@ -36,14 +36,14 @@ public class UiHost4Tests {
 
     @Test(dataProvider = "scenarios_load_result")
     public void load_result(String url, Boolean expected) {
-        UiHost4 host = UiHost4.getInstance();
+        UiHost host = UiHost.getInstance();
         Boolean actual = host.load(url);
         Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "scenarios_currentUrl")
     public void load_currentUrl(String url, String urlDestination, Boolean expected) {
-        UiHost4 host = UiHost4.getInstance();
+        UiHost host = UiHost.getInstance();
         host.load(url);
         String currentUrl = host.getCurrentUrl();
         Boolean actual = currentUrl.contains(urlDestination);
@@ -53,7 +53,7 @@ public class UiHost4Tests {
     @Test
     public void getTitle() {
         String expected = "My First HTML";
-        UiHost4 browser = UiHost4.getInstance();
+        UiHost browser = UiHost.getInstance();
         browser.load(TestResources.getInstance().getPageUrl("head"));
         String actual = browser.getTitle();
         Assert.assertEquals(actual, expected);

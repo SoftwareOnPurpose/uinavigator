@@ -6,12 +6,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Test
-public class UiElement4GetAttributeTests {
+public class UiElementGetAttributeTests {
     private static final TestResources resources = TestResources.getInstance();
-    private static final UiElement4 byTagP =
-            UiElement4.getInstance("tag 'p'", UiLocatorType4.TAG, "p");
-    private static final UiElement4 byTagA =
-            UiElement4.getInstance("'Anchor' tag", UiLocatorType4.TAG, "a");
+    private static final UiElement byTagP =
+            UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
+    private static final UiElement byTagA =
+            UiElement.getInstance("'Anchor' tag", UiLocatorType.TAG, "a");
     private static final String stylePage = "style";
 
     @DataProvider
@@ -28,10 +28,10 @@ public class UiElement4GetAttributeTests {
     @DataProvider
     public static Object[][] scenarios_getAttribute() {
         final String imagePage = "image";
-        final UiElement4 byTagNonexistent =
-                UiElement4.getInstance("tag nonexistent", UiLocatorType4.TAG, "nonexistent");
-        final UiElement4 byTagImg =
-                UiElement4.getInstance("'Image' element", UiLocatorType4.TAG, "img");
+        final UiElement byTagNonexistent =
+                UiElement.getInstance("tag nonexistent", UiLocatorType.TAG, "nonexistent");
+        final UiElement byTagImg =
+                UiElement.getInstance("'Image' element", UiLocatorType.TAG, "img");
         return new Object[][]{
                 {imagePage, byTagNonexistent, "src", null}
                 , {imagePage, byTagImg, "bogus", null}
@@ -60,22 +60,22 @@ public class UiElement4GetAttributeTests {
     }
 
     @Test(dataProvider = "scenarios_getHref")
-    public void getHref(String page, UiElement4 element, String expected) {
-        UiHost4.getInstance().load(resources.getPageUrl(page));
+    public void getHref(String page, UiElement element, String expected) {
+        UiHost.getInstance().load(resources.getPageUrl(page));
         String actual = element.getHref();
         Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "scenarios_getAttribute")
-    public void getAttribute(String page, UiElement4 element, String attribute, String expected) {
-        UiHost4.getInstance().load(resources.getPageUrl(page));
+    public void getAttribute(String page, UiElement element, String attribute, String expected) {
+        UiHost.getInstance().load(resources.getPageUrl(page));
         String actual = element.getAttribute(attribute);
         Assert.assertEquals(actual, expected);
     }
 
     @Test(dataProvider = "scenarios_getStyleProperty")
-    public void getStyleProperty(UiElement4 element, String styleProperty, String expected) {
-        UiHost4.getInstance().load(resources.getPageUrl(stylePage));
+    public void getStyleProperty(UiElement element, String styleProperty, String expected) {
+        UiHost.getInstance().load(resources.getPageUrl(stylePage));
         String actual = element.getStyleProperty(styleProperty);
         Assert.assertEquals(actual, expected);
     }

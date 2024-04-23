@@ -5,39 +5,39 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 
-public class UiElement4 {
+public class UiElement {
     private static Logger logger;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final String description;
     private final GetWebElementBehavior getElementBehavior;
 
-    private UiElement4(String description, GetWebElementBehavior getElementBehavior) {
+    private UiElement(String description, GetWebElementBehavior getElementBehavior) {
         this.description = description;
         this.getElementBehavior = getElementBehavior;
     }
 
-    public static UiElement4 getInstance(String description, String locatorType, String locatorValue) {
+    public static UiElement getInstance(String description, String locatorType, String locatorValue) {
         GetWebElementBehavior getElementBehavior = GetByCssFromRoot.getInstance(locatorType, locatorValue);
-        return new UiElement4(description, getElementBehavior);
+        return new UiElement(description, getElementBehavior);
     }
 
-    public static UiElement4 getInstance(String description, String locatorType, String locatorValue, int ordinal) {
+    public static UiElement getInstance(String description, String locatorType, String locatorValue, int ordinal) {
         GetWebElementBehavior getElementBehavior = GetByOrdinal.getInstance(locatorType, locatorValue, ordinal);
-        return new UiElement4(description, getElementBehavior);
+        return new UiElement(description, getElementBehavior);
     }
 
-    public static UiElement4 getInstance(String description, String locatorType, String locatorValue, UiElement4 ancestor) {
+    public static UiElement getInstance(String description, String locatorType, String locatorValue, UiElement ancestor) {
         GetWebElementBehavior getElementBehavior = ancestor.isByOrdinal()
                 ? GetByCssFromAncestorOrdinal.getInstance(locatorType, locatorValue, ancestor)
                 : GetByCssFromAncestor.getInstance(locatorType, locatorValue, ancestor);
-        return new UiElement4(description, getElementBehavior);
+        return new UiElement(description, getElementBehavior);
     }
 
-    public static UiElement4 getInstance(String description, String locatorType, String locatorValue, int ordinal, UiElement4 ancestor) {
+    public static UiElement getInstance(String description, String locatorType, String locatorValue, int ordinal, UiElement ancestor) {
         GetWebElementBehavior getElementBehavior = ancestor.isByOrdinal()
                 ? GetByCssOrdinalFromAncestorOrdinal.getInstance(locatorType, locatorValue, ordinal, ancestor)
                 : GetByOrdinal.getInstance(locatorType, locatorValue, ordinal, ancestor);
-        return new UiElement4(description, getElementBehavior);
+        return new UiElement(description, getElementBehavior);
     }
 
     private boolean isByOrdinal() {
