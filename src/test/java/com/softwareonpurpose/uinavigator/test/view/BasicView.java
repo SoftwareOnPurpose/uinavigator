@@ -20,6 +20,11 @@ public class BasicView extends UiView {
         return BasicView.expect();
     }
 
+    public static BasicView directNav(String queryString) {
+        new BasicView().load(queryString);
+        return BasicView.expect();
+    }
+
     @Override
     protected boolean confirmState() {
         return this.getElement().isDisplayed();

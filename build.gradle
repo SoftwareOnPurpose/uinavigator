@@ -1,10 +1,13 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
+plugins {
+    id 'java'
+}
+
 group 'com.softwareonpurpose'
 
-apply plugin: 'java'
 
-version = '3.0.5'
+version = '4.0.0'
 
 repositories {
     mavenCentral()
@@ -26,7 +29,7 @@ dependencies {
 }
 
 wrapper() {
-    gradleVersion = '8.7'
+    gradleVersion = '8.5'
 }
 
 tasks.register('configureJavadoc') {

@@ -76,6 +76,11 @@ public abstract class UiView {
         UiHost.getInstance().load(VIEW_URL);
     }
 
+    protected void load(String queryString) {
+        String formattedQueryString = queryString == null ? "" : queryString.contains("?") ? queryString : "?" + queryString;
+        UiHost.getInstance().load(VIEW_URL + formattedQueryString);
+    }
+
     protected UiElement getElement() {
         return VIEW_ELEMENT;
     }
