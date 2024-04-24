@@ -4,16 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-public class GetByCssFromAncestorOrdinal extends GetWebElementBehavior {
+public class GetFromOrdinal extends GetWebElementBehavior {
     private final UiElement ancestor;
 
-    protected GetByCssFromAncestorOrdinal(String locatorType, String locatorValue, UiElement ancestor) {
+    protected GetFromOrdinal(String locatorType, String locatorValue, UiElement ancestor) {
         super(locatorType, locatorValue, null, ancestor);
         this.ancestor = ancestor;
     }
 
-    public static GetByCssFromAncestorOrdinal getInstance(String locatorType, String locatorValue, UiElement ancestor) {
-        return new GetByCssFromAncestorOrdinal(locatorType, locatorValue, ancestor);
+    public static GetFromOrdinal getInstance(String locatorType, String locatorValue, UiElement ancestor) {
+        return new GetFromOrdinal(locatorType, locatorValue, ancestor);
     }
 
     @Override

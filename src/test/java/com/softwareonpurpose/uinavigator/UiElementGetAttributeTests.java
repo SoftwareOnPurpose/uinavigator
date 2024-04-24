@@ -32,6 +32,8 @@ public class UiElementGetAttributeTests {
                 UiElement.getInstance("tag nonexistent", UiLocatorType.TAG, "nonexistent");
         final UiElement byTagImg =
                 UiElement.getInstance("'Image' element", UiLocatorType.TAG, "img");
+//        final UiElement byAttribute =
+//                UiElement.getInstance("'Attribute' element", UiLocatorType.TAG, "img", "width", "104");
         return new Object[][]{
                 {imagePage, byTagNonexistent, "src", null}
                 , {imagePage, byTagImg, "bogus", null}
@@ -39,6 +41,7 @@ public class UiElementGetAttributeTests {
                 , {imagePage, byTagImg, "alt", "W3Schools.com"}
                 , {imagePage, byTagImg, "width", "104"}
                 , {stylePage, byTagP, "style", "color: red;"}
+//                , {imagePage, byAttribute, "height", "142"}
         };
     }
 
