@@ -1,6 +1,6 @@
 package com.softwareonpurpose.uinavigator.test.view;
 
-import com.softwareonpurpose.uinavigator.TestResources;
+import com.softwareonpurpose.uinavigator.TestResource;
 import com.softwareonpurpose.uinavigator.UiElement;
 import com.softwareonpurpose.uinavigator.UiLocatorType;
 import com.softwareonpurpose.uinavigator.UiView;
@@ -8,7 +8,7 @@ import com.softwareonpurpose.uinavigator.UiView;
 public class BasicView extends UiView {
 
     public BasicView() {
-        super(TestResources.getInstance().getPageUrl("basic"), UiElement.getInstance("'Basic' view", UiLocatorType.TAG, "body"));
+        super(TestResource.getInstance().getPageUrl("basic"), UiElement.getInstance("'Basic' view", UiLocatorType.TAG, "body"));
     }
 
     public static BasicView expect() {

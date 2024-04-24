@@ -7,10 +7,14 @@ import org.testng.annotations.Test;
 
 @Test
 public class UiElementActionTests {
-    private static final TestResources resources = TestResources.getInstance();
+    private static final TestResource resources = TestResource.getInstance();
 
     @DataProvider
     public static Object[][] scenarios_click() {
+        String attributeElementDescription = "'Width' attribute";
+        String tag = "img";
+        String attribute = "widt";
+        String attributeValue = "104";
         final UiElement byTagPNotClickable =
                 UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
         final UiElement byTagA =
@@ -19,11 +23,15 @@ public class UiElementActionTests {
                 UiElement.getInstance("'Anchor' tag #2", UiLocatorType.TAG, "a", 2);
         final String basicPage = "basic";
         final String linkPage = "link";
+        final String imagePage = "image";
+        final UiElement byAttribute =
+                UiElement.getInstance(attributeElementDescription, UiLocatorType.TAG, tag, attribute, attributeValue);
         return new Object[][]{
                 {basicPage, byTagPNotClickable, "basic"}
                 , {basicPage, byTagA, "basic"}
                 , {linkPage, byTagA, "https://www.google.com/"}
                 , {linkPage, byTagAOrdinal2, "https://www.youtube.com/"}
+                , {imagePage, byAttribute, imagePage}
         };
     }
 

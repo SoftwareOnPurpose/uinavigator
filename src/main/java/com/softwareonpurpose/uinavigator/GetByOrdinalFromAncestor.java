@@ -9,7 +9,7 @@ public class GetByOrdinalFromAncestor extends GetWebElementBehavior {
     private final UiElement ancestor;
 
     protected GetByOrdinalFromAncestor(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
-        super(locatorType, locatorValue, ordinal, ancestor);
+        super(locatorType, locatorValue, null, null, ordinal, ancestor);
         this.ancestor = ancestor;
     }
 

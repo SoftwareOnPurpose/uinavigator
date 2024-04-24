@@ -6,7 +6,7 @@ public class GetFromAncestor extends GetWebElementBehavior {
     private final UiElement ancestor;
 
     protected GetFromAncestor(String locatorType, String locatorValue, UiElement ancestor) {
-        super(locatorType, locatorValue, null, ancestor);
+        super(locatorType, locatorValue,null,null, null, ancestor);
         this.ancestor = ancestor;
     }
 

@@ -6,18 +6,20 @@ import org.openqa.selenium.WebElement;
 
 public abstract class GetWebElementBehavior {
     protected final By.ByCssSelector locator;
-    private final String css;
     protected final int ordinal;
+    private final String css;
 
-    protected GetWebElementBehavior(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
-        this.css = composeCss(locatorType, locatorValue, ancestor);
+    protected GetWebElementBehavior(String locatorType, String locatorValue, String attribute, String attributeValue, Integer ordinal, UiElement ancestor) {
+        this.css = composeCss(locatorType, locatorValue, attribute, attributeValue, ancestor);
         this.ordinal = ordinal == null || ordinal < 0 ? 0 : ordinal;
         this.locator = new By.ByCssSelector(this.css);
     }
 
-    private static String composeCss(String locatorType, String locatorValue, UiElement ancestor) {
+    private static String composeCss(String locatorType, String locatorValue, String attribute, String attributeValue, UiElement ancestor) {
         String ancestorCss = ancestor == null ? "" : ancestor.getCss();
-        return String.format("%s %s", ancestorCss, String.format("%s%s", locatorType, locatorValue));
+        String attributeCss = attribute == null ? "" : String.format("[%s='%s']", attribute, attributeValue);
+        //  img[width='104']
+        return String.format("%s %s", ancestorCss, String.format("%s%s%s", locatorType, locatorValue, attributeCss));
     }
 
     protected static String extractExceptionMessage(NoSuchElementException e) {

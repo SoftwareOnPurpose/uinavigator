@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Test
-public class UiViewTests extends TestResources {
+public class UiViewTests extends TestResource {
     @DataProvider
     public static Object[][] scenariosLoad() {
         return new Object[][]{

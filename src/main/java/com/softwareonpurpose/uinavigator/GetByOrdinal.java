@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GetByOrdinal extends GetWebElementBehavior {
     private GetByOrdinal(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {
-        super(locatorType, locatorValue, ordinal, ancestor);
+        super(locatorType, locatorValue, null, null, ordinal, ancestor);
     }
 
     public static GetByOrdinal getInstance(String locatorType, String locatorValue, Integer ordinal, UiElement ancestor) {

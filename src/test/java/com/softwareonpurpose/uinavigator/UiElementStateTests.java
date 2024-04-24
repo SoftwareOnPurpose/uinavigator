@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @Test
 public class UiElementStateTests {
-    private static final TestResources resources = TestResources.getInstance();
+    private static final TestResource resources = TestResource.getInstance();
 
     @DataProvider
     public static Object[][] scenarios_isDisplayed() {

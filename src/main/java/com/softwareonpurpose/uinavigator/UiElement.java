@@ -38,10 +38,10 @@ public class UiElement {
         return new UiElement(description, getElementBehavior);
     }
 
-//    public static UiElement getInstance(String description, String locatorType, String locatorValue, String attribute, String attributeValue) {
-//        GetWebElementBehavior getElementBehavior = GetByAttributeFromRoot.getInstance(locatorType, locatorValue, attribute, attributeValue);
-//        return new UiElement(description, getElementBehavior);
-//    }
+    public static UiElement getInstance(String description, String locatorType, String locatorValue, String attribute, String attributeValue) {
+        GetWebElementBehavior getElementBehavior = GetByAttribute.getInstance(locatorType, locatorValue, attribute, attributeValue);
+        return new UiElement(description, getElementBehavior);
+    }
 
     private boolean isByOrdinal() {
         return getElementBehavior.isByOrdinal();

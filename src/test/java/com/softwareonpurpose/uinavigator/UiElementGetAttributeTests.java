@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @Test
 public class UiElementGetAttributeTests {
-    private static final TestResources resources = TestResources.getInstance();
+    private static final TestResource resources = TestResource.getInstance();
     private static final UiElement byTagP =
             UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
     private static final UiElement byTagA =

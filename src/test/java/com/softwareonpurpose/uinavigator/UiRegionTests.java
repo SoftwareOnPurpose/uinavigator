@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 @Test
 public class UiRegionTests {
 
-    private final TestResources resources = TestResources.getInstance();
+    private final TestResource resources = TestResource.getInstance();
 
     @AfterMethod
     public void terminate() {

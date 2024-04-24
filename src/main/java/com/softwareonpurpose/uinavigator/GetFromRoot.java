@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class GetFromRoot extends GetWebElementBehavior {
     private GetFromRoot(String locatorType, String locatorValue) {
-        super(locatorType, locatorValue, null, null);
+        super(locatorType, locatorValue, null, null, null, null);
     }
 
     public static GetFromRoot getInstance(String locatorType, String locatorValue) {

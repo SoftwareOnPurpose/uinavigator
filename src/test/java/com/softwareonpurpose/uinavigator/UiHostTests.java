@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 @Test
 public class UiHostTests {
-    private static final TestResources resources = TestResources.getInstance();
+    private static final TestResource resources = TestResource.getInstance();
 
     @DataProvider
     public static Object[][] scenarios_load_result() {
@@ -54,7 +54,7 @@ public class UiHostTests {
     public void getTitle() {
         String expected = "My First HTML";
         UiHost browser = UiHost.getInstance();
-        browser.load(TestResources.getInstance().getPageUrl("head"));
+        browser.load(TestResource.getInstance().getPageUrl("head"));
         String actual = browser.getTitle();
         Assert.assertEquals(actual, expected);
     }

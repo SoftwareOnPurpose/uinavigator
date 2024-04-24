@@ -2,10 +2,10 @@ package com.softwareonpurpose.uinavigator;
 
 import java.net.URL;
 
-public class TestResources {
+public class TestResource {
 
-    public static TestResources getInstance() {
-        return new TestResources();
+    public static TestResource getInstance() {
+        return new TestResource();
     }
 
     protected String getResourceFilename(String resourceFilename) {

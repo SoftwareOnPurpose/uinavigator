@@ -31,9 +31,13 @@ public class UiElementGetInstanceTests {
     @SuppressWarnings("rawtypes")
     @Test
     public void getInstance_parent() {
+        String parentDescription = "'Unordered List' element";
+        String parentLocatorValue = "ul";
+        String description = "'List Item' element";
+        String locatorValue = "li";
+        UiElement parent = UiElement.getInstance(parentDescription, UiLocatorType.TAG, parentLocatorValue);
+        Class actual = UiElement.getInstance(description, UiLocatorType.TAG, locatorValue, parent).getClass();
         Class expected = UiElement.class;
-        UiElement parent = UiElement.getInstance("'Unordered List' element", UiLocatorType.TAG, "ul");
-        Class actual = UiElement.getInstance("'List Item' element", UiLocatorType.TAG, "li", parent).getClass();
         Assert.assertEquals(actual, expected);
     }
 
@@ -41,20 +45,27 @@ public class UiElementGetInstanceTests {
     @Test
     public void getInstance_ordinal_parent() {
         Class expected = UiElement.class;
-        UiElement parent = UiElement.getInstance("'Ordered List' element", UiLocatorType.TAG, "ol");
-        Class actual = UiElement.getInstance("'List Item' element", UiLocatorType.TAG, "li", 2, parent).getClass();
+        String parentDescription = "'Ordered List' element";
+        String parentLocatorValue = "ol";
+        UiElement parent = UiElement.getInstance(parentDescription, UiLocatorType.TAG, parentLocatorValue);
+        String description = "'List Item' element";
+        String locatorValue = "li";
+        int ordinal = 2;
+        Class actual = UiElement.getInstance(description, UiLocatorType.TAG, locatorValue, ordinal, parent).getClass();
         Assert.assertEquals(actual, expected);
     }
 
+    @SuppressWarnings("rawtypes")
     @Test
-    public void getInstance_attribute(){
+    public void getInstance_attribute() {
         Class expected = UiElement.class;
         String description = "'Attribute' element";
         String locatorType = UiLocatorType.TAG;
         String locatorValue = "img";
         String attribute = "width";
         String attributeValue = "104";
-//        Class actual = UiElement.getInstance(description, locatorType, locatorValue, attribute, attributeValue);
-//        Assert.assertEquals(actual, expected);
+        Class actual =
+                UiElement.getInstance(description, locatorType, locatorValue, attribute, attributeValue).getClass();
+        Assert.assertEquals(actual, expected);
     }
 }
