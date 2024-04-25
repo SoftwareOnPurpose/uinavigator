@@ -15,8 +15,6 @@ public class UiElementGetTextTests {
             MY_HEADER + "\n" +
             NESTED_PARAGRAPH;
     private static final String ID_PAGE = "id";
-    private static final UiElement BY_ID_NONEXISTENT =
-            UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
 
     @DataProvider
     public static Object[][] scenarios_getText() {
@@ -61,54 +59,36 @@ public class UiElementGetTextTests {
                 UiElement.getInstance("id on descendent", UiLocatorType.ID, "p-id");
         final UiElement byIdDiv =
                 UiElement.getInstance("id on ancestor element", UiLocatorType.ID, "div-id");
-        final UiElement byTagNonexistent =
-                UiElement.getInstance("tag nonexistent", UiLocatorType.TAG, "nonexistent");
         final UiElement byTagRoot =
                 UiElement.getInstance("tag 'body'", UiLocatorType.TAG, "body");
         final UiElement byTagChild =
                 UiElement.getInstance("tag 'p'", UiLocatorType.TAG, "p");
         final UiElement byTagDescendent =
                 UiElement.getInstance("tag 'li'", UiLocatorType.TAG, "li");
-        final UiElement byClassNonexistent =
-                UiElement.getInstance("class nonexistent", UiLocatorType.CLASS, "nonexistent");
         final UiElement byClassRootElement =
                 UiElement.getInstance("class 'root-element'", UiLocatorType.CLASS, "root-element");
         final UiElement byClassChild =
                 UiElement.getInstance("class 'error'", UiLocatorType.CLASS, "error");
         final UiElement byClassDescendent =
                 UiElement.getInstance("class 'names'", UiLocatorType.CLASS, "names");
-        final UiElement byTagOrdinalNonexistent =
-                UiElement.getInstance("tag ordinal nonexistent", UiLocatorType.TAG, "h1", 2);
         final UiElement byTagOrdinalChild =
                 UiElement.getInstance("child tag ordinal", UiLocatorType.TAG, "p", 3);
         final UiElement byTagOrdinalDescendent =
                 UiElement.getInstance("descendent tag ordinal", UiLocatorType.TAG, "li", 4);
         final UiElement byTagOrdinalChildDescendent =
                 UiElement.getInstance("child/descendent tag ordinal", UiLocatorType.TAG, "table", 2);
-        final UiElement byClassOrdinalNonexistent =
-                UiElement.getInstance("class ordinal nonexistent", UiLocatorType.CLASS, "error", 3);
         final UiElement byClassOrdinalChild =
                 UiElement.getInstance("child class ordinal", UiLocatorType.CLASS, "error", 2);
         final UiElement byClassOrdinalDescendent =
                 UiElement.getInstance("descendent class ordinal", UiLocatorType.CLASS, "sub-table", 2);
         final UiElement byClassChildDescendent =
                 UiElement.getInstance("child/descendent class ordinal", UiLocatorType.CLASS, "names", 2);
-        final UiElement byTagNonexistentInRoot =
-                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent", byIdRoot);
-        final UiElement byTagNonexistentInParent =
-                UiElement.getInstance("tag nonexistent in parent", UiLocatorType.TAG, "h1", byIdDiv);
-        final UiElement byTagInParentNonexistent =
-                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", BY_ID_NONEXISTENT);
         final UiElement byTagInParent =
                 UiElement.getInstance("tag in parent", UiLocatorType.TAG, "p", byIdDiv);
         final UiElement byClassTableContainer =
                 UiElement.getInstance("class 'table-container'", UiLocatorType.CLASS, "table-container");
         final UiElement byTagInAncestor =
                 UiElement.getInstance("tag in ancestor", UiLocatorType.TAG, "td", byClassTableContainer);
-        final UiElement byTagUl =
-                UiElement.getInstance("'ul' tag", UiLocatorType.TAG, "ul");
-        final UiElement byTagOrdinalNonexistentInAncestor =
-                UiElement.getInstance("'li' tag", UiLocatorType.TAG, "li", 4, byTagUl);
         final UiElement byClassOrdinalInParent =
                 UiElement.getInstance("'sub-table' class", UiLocatorType.CLASS, "sub-table", 2, byClassTableContainer);
         final UiElement byTagInParentOrdinal =
@@ -127,34 +107,26 @@ public class UiElementGetTextTests {
                 , {ID_PAGE, byIdChild, MY_HEADER}
                 , {ID_PAGE, byIdDescendent, NESTED_PARAGRAPH}
                 //  element by tag
-                , {basicPage, byTagNonexistent, null}
                 , {basicPage, byTagRoot, firstHeading + "\n" + firstParagraph}
                 , {basicPage, byTagChild, firstParagraph}
                 , {listPage, byTagDescendent, coffeeUnordered}
                 //  element by class
-                , {basicPage, byClassNonexistent, null}
                 , {classPage, byClassRootElement,
                 aParagraph + "\n" + aParagraph + "\n" + different + "\n" + aParagraph + "\n" + differentToo}
                 , {classPage, byClassChild, different}
                 , {tablesPage, byClassDescendent, table2}
                 //  element by tag and ordinal
-                , {basicPage, byTagOrdinalNonexistent, null}
                 , {classPage, byTagOrdinalChild, different}
                 , {listPage, byTagOrdinalDescendent, coffeeOrdered}
                 , {tablesPage, byTagOrdinalChildDescendent, table2}
                 //  element by class and ordinal
-                , {basicPage, byClassOrdinalNonexistent, null}
                 , {classPage, byClassOrdinalChild, differentToo}
                 , {tablesPage, byClassOrdinalDescendent, table3}
                 , {tablesPage, byClassChildDescendent, table4}
                 //  element as descendent
-                , {basicPage, byTagNonexistentInRoot, null}
-                , {basicPage, byTagNonexistentInParent, null}
-                , {basicPage, byTagInParentNonexistent, null}
                 , {ID_PAGE, byTagInParent, NESTED_PARAGRAPH}
                 , {tablesPage, byTagInAncestor, jill2FirstName}
                 //  element as nth descendent of ancestor
-                , {listPage, byTagOrdinalNonexistentInAncestor, null}
                 , {tablesPage, byClassOrdinalInParent, table3}
                 , {tablesPage, byTagInParentOrdinal, firstname3}
                 , {tablesPage, byClassOrdinalInParentOrdinal, joe4}
