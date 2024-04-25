@@ -7,16 +7,19 @@ import org.testng.annotations.Test;
 
 @Test
 public class UiElementGetTextTests {
-    private static final TestResource resources = TestResource.getInstance();
+    private static final TestResource RESOURCE = TestResource.getInstance();
+    private static final String MY_HEADER = "My Header";
+    private static final String NESTED_PARAGRAPH = "A nested paragraph";
+    private static final String ID_PAGE_CONTENT = "The id Attribute\n" +
+            "Use CSS to style an element with the id \"myHeader\":\n" +
+            MY_HEADER + "\n" +
+            NESTED_PARAGRAPH;
+    private static final String ID_PAGE = "id";
+    private static final UiElement BY_ID_NONEXISTENT =
+            UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
 
     @DataProvider
     public static Object[][] scenarios_getText() {
-        final String myHeader = "My Header";
-        final String nestedParagraph = "A nested paragraph";
-        final String idPageContent = "The id Attribute\n" +
-                "Use CSS to style an element with the id \"myHeader\":\n" +
-                myHeader + "\n" +
-                nestedParagraph;
         final String firstParagraph = "My first paragraph.";
         final String firstHeading = "My First Heading";
         final String coffeeUnordered = "Coffee (unordered)";
@@ -50,8 +53,6 @@ public class UiElementGetTextTests {
         final String table2 = tableHeading2 + "\n" + jill2 + "\n" + eve2 + "\n" + joe2;
         final String table3 = tableHeading3 + "\n" + jill3 + "\n" + eve3 + "\n" + joe3;
         final String table4 = tableHeading4 + "\n" + jill4 + "\n" + eve4 + "\n" + joe4;
-        final UiElement byIdNonexistent =
-                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
         final UiElement byIdRoot =
                 UiElement.getInstance("id existent", UiLocatorType.ID, "view");
         final UiElement byIdChild =
@@ -97,7 +98,7 @@ public class UiElementGetTextTests {
         final UiElement byTagNonexistentInParent =
                 UiElement.getInstance("tag nonexistent in parent", UiLocatorType.TAG, "h1", byIdDiv);
         final UiElement byTagInParentNonexistent =
-                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", byIdNonexistent);
+                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", BY_ID_NONEXISTENT);
         final UiElement byTagInParent =
                 UiElement.getInstance("tag in parent", UiLocatorType.TAG, "p", byIdDiv);
         final UiElement byClassTableContainer =
@@ -118,15 +119,13 @@ public class UiElementGetTextTests {
                 UiElement.getInstance("class 'row-style'", UiLocatorType.CLASS, "row-style", 3, byTagOrdinal);
         final String basicPage = "basic";
         final String listPage = "list";
-        final String idPage = "id";
         final String classPage = "class";
         final String tablesPage = "tables";
         return new Object[][]{
                 //  element by id
-                {idPage, byIdNonexistent, null}
-                , {idPage, byIdRoot, idPageContent}
-                , {idPage, byIdChild, myHeader}
-                , {idPage, byIdDescendent, nestedParagraph}
+                {ID_PAGE, byIdRoot, ID_PAGE_CONTENT}
+                , {ID_PAGE, byIdChild, MY_HEADER}
+                , {ID_PAGE, byIdDescendent, NESTED_PARAGRAPH}
                 //  element by tag
                 , {basicPage, byTagNonexistent, null}
                 , {basicPage, byTagRoot, firstHeading + "\n" + firstParagraph}
@@ -152,7 +151,7 @@ public class UiElementGetTextTests {
                 , {basicPage, byTagNonexistentInRoot, null}
                 , {basicPage, byTagNonexistentInParent, null}
                 , {basicPage, byTagInParentNonexistent, null}
-                , {idPage, byTagInParent, nestedParagraph}
+                , {ID_PAGE, byTagInParent, NESTED_PARAGRAPH}
                 , {tablesPage, byTagInAncestor, jill2FirstName}
                 //  element as nth descendent of ancestor
                 , {listPage, byTagOrdinalNonexistentInAncestor, null}
@@ -169,8 +168,16 @@ public class UiElementGetTextTests {
 
     @Test(dataProvider = "scenarios_getText")
     public void getText(String page, UiElement element, String expected) {
-        UiHost.getInstance().load(resources.getPageUrl(page));
+        UiHost.getInstance().load(RESOURCE.getPageUrl(page));
         String actual = element.getText();
+        Assert.assertEquals(actual, expected);
+    }
+
+    public void getText_nonexistentElement(){
+        String expected = null;
+        UiHost.getInstance().load(RESOURCE.getPageUrl(ID_PAGE));
+        String actual = BY_ID_NONEXISTENT.getText();
+        //noinspection ConstantValue
         Assert.assertEquals(actual, expected);
     }
 }
