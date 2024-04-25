@@ -24,8 +24,6 @@ public class UiElementStateTests {
                 UiElement.getInstance("id existent", UiLocatorType.ID, "view");
         final UiElement byIdChild =
                 UiElement.getInstance("id on sub-element", UiLocatorType.ID, "heading-id");
-        final UiElement byIdDiv =
-                UiElement.getInstance("id on ancestor element", UiLocatorType.ID, "div-id");
         final UiElement byIdDescendent =
                 UiElement.getInstance("id on descendent", UiLocatorType.ID, "p-id");
         final UiElement byTagNonexistent =
@@ -88,8 +86,7 @@ public class UiElementStateTests {
         return new Object[][]
                 {
                         //  element by id
-                        {idPage, byIdNonexistent, isNotDisplayed}
-                        , {idPage, byIdRoot, isDisplayed}
+                        {idPage, byIdRoot, isDisplayed}
                         , {idPage, byIdChild, isDisplayed}
                         , {idPage, byIdDescendent, isDisplayed}
                         //  element by tag
@@ -135,6 +132,15 @@ public class UiElementStateTests {
     public void isDisplayed(String page, UiElement element, boolean expected) {
         UiHost.getInstance().load(resources.getPageUrl(page));
         boolean actual = element.isDisplayed();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void idDisplayed_nonexistent() {
+        Boolean expected = false;
+        UiElement element =
+                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
+        Boolean actual = element.isDisplayed();
         Assert.assertEquals(actual, expected);
     }
 }
