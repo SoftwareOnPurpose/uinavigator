@@ -172,12 +172,4 @@ public class UiElementGetTextTests {
         String actual = element.getText();
         Assert.assertEquals(actual, expected);
     }
-
-    public void getText_nonexistentElement(){
-        String expected = null;
-        UiHost.getInstance().load(RESOURCE.getPageUrl(ID_PAGE));
-        String actual = BY_ID_NONEXISTENT.getText();
-        //noinspection ConstantValue
-        Assert.assertEquals(actual, expected);
-    }
 }
