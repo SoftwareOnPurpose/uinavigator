@@ -9,11 +9,14 @@ public class UiElement {
     private static Logger logger;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final String description;
-    private final GetWebElementBehavior getElementBehavior;
+    private final transient GetWebElementBehavior getElementBehavior;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final String getElementBehaviorName;
 
     private UiElement(String description, GetWebElementBehavior getElementBehavior) {
         this.description = description;
         this.getElementBehavior = getElementBehavior;
+        this.getElementBehaviorName = this.getElementBehavior.getClass().getSimpleName();
     }
 
     public static UiElement getInstance(String description, String locatorType, String locatorValue) {
@@ -32,9 +35,7 @@ public class UiElement {
     }
 
     public static UiElement getInstance(String description, String locatorType, String locatorValue, int ordinal, UiElement ancestor) {
-        GetWebElementBehavior getElementBehavior = ancestor.isByOrdinal()
-                ? GetByOrdinalFromAncestor.getInstance(locatorType, locatorValue, ordinal, ancestor)
-                : GetByOrdinal.getInstance(locatorType, locatorValue, ordinal, ancestor);
+        GetWebElementBehavior getElementBehavior = GetByOrdinalFromAncestor.getInstance(locatorType, locatorValue, ordinal, ancestor);
         return new UiElement(description, getElementBehavior);
     }
 
@@ -43,7 +44,12 @@ public class UiElement {
         return new UiElement(description, getElementBehavior);
     }
 
-    private boolean isByOrdinal() {
+//    public static UiElement getInstance(String description, String locatorType, String locatorValue, String attribute, String attributeValue, UiElement ancestor) {
+//        GetWebElementBehavior getElementBehavior = GetByAttributeFromAncestor.getInstance(locatorType, locatorValue, attribute, attributeValue, ancestor);
+//        return new UiElement(description, getElementBehavior);
+//    }
+
+    boolean isByOrdinal() {
         return getElementBehavior.isByOrdinal();
     }
 
