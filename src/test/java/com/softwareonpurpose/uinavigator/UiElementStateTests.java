@@ -8,9 +8,11 @@ import org.testng.annotations.Test;
 @Test
 public class UiElementStateTests {
     private static final TestResource resources = TestResource.getInstance();
+    private static final UiElement BY_ID_NONEXISTENT =
+            UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
 
     @DataProvider
-    public static Object[][] scenarios_isDisplayed() {
+    public static Object[][] scenarios() {
         boolean isDisplayed = true;
         boolean isNotDisplayed = false;
         final String basicPage = "basic";
@@ -18,8 +20,6 @@ public class UiElementStateTests {
         final String idPage = "id";
         final String classPage = "class";
         final String tablesPage = "tables";
-        final UiElement byIdNonexistent =
-                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
         final UiElement byIdRoot =
                 UiElement.getInstance("id existent", UiLocatorType.ID, "view");
         final UiElement byIdChild =
@@ -64,7 +64,7 @@ public class UiElementStateTests {
         final UiElement byClassNonexistentInParent =
                 UiElement.getInstance("class nonexistent in parent", UiLocatorType.CLASS, "h1", byTagTable);
         final UiElement byTagInParentNonexistent =
-                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", byIdNonexistent);
+                UiElement.getInstance("tag in parent nonexistent", UiLocatorType.TAG, "h1", BY_ID_NONEXISTENT);
         final UiElement byClassTableContainer =
                 UiElement.getInstance("class 'table-container'", UiLocatorType.CLASS, "table-container");
         final UiElement byClassInParent =
@@ -123,23 +123,28 @@ public class UiElementStateTests {
                 };
     }
 
+    @DataProvider
+    public static Object[][] scenarios_nonexistent() {
+        return new Object[][]{
+                {"basic", BY_ID_NONEXISTENT, false}
+        };
+    }
+
     @AfterMethod
     public void terminate() {
         UiNavigator.getInstance().quitDriver();
     }
 
-    @Test(dataProvider = "scenarios_isDisplayed")
+    @Test(dataProvider = "scenarios")
     public void isDisplayed(String page, UiElement element, boolean expected) {
         UiHost.getInstance().load(resources.getPageUrl(page));
         boolean actual = element.isDisplayed();
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void idDisplayed_nonexistent() {
-        Boolean expected = false;
-        UiElement element =
-                UiElement.getInstance("id nonexistent", UiLocatorType.ID, "nonexistent");
+    @Test(dataProvider = "scenarios_nonexistent")
+    public void idDisplayed_nonexistent(String page, UiElement element, Boolean expected) {
+        UiHost.getInstance().load(resources.getPageUrl(page));
         Boolean actual = element.isDisplayed();
         Assert.assertEquals(actual, expected);
     }
