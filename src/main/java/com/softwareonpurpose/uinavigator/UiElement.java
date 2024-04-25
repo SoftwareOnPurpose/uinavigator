@@ -10,7 +10,7 @@ public class UiElement {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final String description;
     private final transient GetWebElementBehavior getElementBehavior;
-    @SuppressWarnings("FieldCanBeLocal")
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final String getElementBehaviorName;
 
     private UiElement(String description, GetWebElementBehavior getElementBehavior) {
